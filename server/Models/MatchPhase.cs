@@ -1,8 +1,8 @@
 public enum MatchPhase
 {
-  Pending, 
-  Preview,
-  Voting,
-  Results,
-  Complete
+    Pending,
+    Preview,
+    Voting,
+    Results,
+    Complete
 }
