@@ -1,7 +1,9 @@
-namespace BracketGame.Server.Models;
+namespace BracketGame.Server.Enums;
 
 public enum GamePhase
 {
+    Pending,
+    Suggesting,
     Seeding,
     Bracket,
     Complete

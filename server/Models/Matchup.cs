@@ -1,3 +1,5 @@
+using BracketGame.Server.Enums;
+
 namespace BracketGame.Server.Models;
 
 public class Matchup

@@ -32,7 +32,10 @@ public class LobbyService(BracketDbContext dbContext, PlayerService playerServic
 
     public async Task<JoinLobbyResponseDto> JoinLobby(string code, string displayName)
     {
-        var lobby = await ValidateCode(code);
+        var lobby = await dbContext.Lobbies
+            .Include(l => l.Players)
+            .Include(l => l.Games)
+            .FirstOrDefaultAsync(x => x.Code == code);
         if (lobby == null)
         {
             throw new KeyNotFoundException("Lobby not found!");
