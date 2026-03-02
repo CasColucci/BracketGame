@@ -1,4 +1,4 @@
-namespace Models;
+namespace BracketGame.Server.Models;
 
 public class Game
 {
