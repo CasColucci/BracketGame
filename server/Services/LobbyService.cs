@@ -7,12 +7,12 @@ namespace BracketGame.Server.Services;
 
 public class LobbyService(BracketDbContext dbContext, PlayerService playerService)
 {
-    public async Task<Lobby> CreateLobby(string displayName)
+    public async Task<JoinLobbyResponseDto> CreateLobby(string displayName)
     {
         string lobbyCode = await GenerateLobbyCode();
         Lobby lobby = new Lobby()
         {
-            Code = lobbyCode,
+            Code = lobbyCode
         };
         var player = playerService.CreatePlayer(displayName);
 
@@ -21,7 +21,24 @@ public class LobbyService(BracketDbContext dbContext, PlayerService playerServic
         dbContext.Lobbies.Add(lobby);
         await dbContext.SaveChangesAsync();
 
-        return lobby;
+        var players = new List<PlayerDto>();
+        players.Add(new PlayerDto
+        {
+            Id = player.Id,
+            DisplayName = player.DisplayName,
+            IsHost = player.IsHost
+        });
+
+        return new JoinLobbyResponseDto
+        {
+            PlayerId = player.Id,
+            PlayerDisplayName = player.DisplayName,
+            LobbyId = lobby.Id,
+            LobbyCode = lobby.Code,
+            Players = players,
+            CurrentGameId = null,
+            PriorGames = null
+        };
     }
 
     public async Task<Lobby?> ValidateCode(string code)
