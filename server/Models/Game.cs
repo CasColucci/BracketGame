@@ -9,4 +9,6 @@ public class Game
     public ICollection<Round> Rounds { get; set; }
     public Guid? CurrentRoundId { get; set; }
     public Guid LobbyId { get; set; }
+    public string? Winner { get; set; }
+    public ICollection<string>? Losers { get; set; }
 }
