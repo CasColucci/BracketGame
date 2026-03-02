@@ -15,6 +15,7 @@ public class LobbyService(BracketDbContext dbContext, PlayerService playerServic
             Code = lobbyCode
         };
         var player = playerService.CreatePlayer(displayName);
+        player.IsHost = true;
 
         lobby.Players.Add(player);
 
