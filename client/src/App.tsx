@@ -23,10 +23,10 @@ function App() {
 
     return (
         <div>
-            <Card title='Test'>
+            <Card title="Golly's Bracket Game">
                 <Button label='Test It' onClick={() => createLobbyClick("TestUser2")} />
+                <p>{result}</p>
             </Card>
-            <p>{result}</p>
         </div >
     )
 }

@@ -1,8 +1,8 @@
 /* Twilight 5 Palette By Star  */
 @font-face {
-    font-family: 'Arcade_Cabinet';
-    src: local('Arcade Cabinet'), local('Arcade_Cabinet'),
-        url('./assets/fonts/Arcade_Cabinet.ttf') format('truetype');
+    font-family: 'Scrambled_Eggs_Bold';
+    src: local('Scrambled_Eggs_Bold'), local('Scrambled Eggs Bold'),
+        url('./assets/fonts/Scrambled_Eggs_Bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -18,7 +18,7 @@
 }
 
 :root {
-    --header-font: 'Arcade_Cabinet';
+    --header-font: 'Scrambled_Eggs_Bold';
     --body-font: 'Simple_Script';
     --dyslexic-font: 'DyslexicPixel';
     --darkest: #292831;

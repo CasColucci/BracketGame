@@ -6,3 +6,8 @@
     box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest), 
         calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 0 var(--darkest);
 }
+
+.title {
+    font-size: 28px;
+    font-family: var(--header-font);
+}
