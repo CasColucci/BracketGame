@@ -1,4 +1,4 @@
-/* Late Night Bath by sukinapan */
+/* Twilight 5 Palette By Star  */
 @font-face {
     font-family: 'Arcade_Cabinet';
     src: local('Arcade Cabinet'), local('Arcade_Cabinet'),
@@ -21,9 +21,11 @@
     --header-font: 'Arcade_Cabinet';
     --body-font: 'Simple_Script';
     --dyslexic-font: 'DyslexicPixel';
-    --darkest-gray: #282d3c;
-    --mid-gray: #5b5d70;
-    --lightest-gray: #74838c;
-    --cream: #ffc4b8;
-    --pink: #f69197;
+    --darkest: #292831;
+    --second-darkest: #333f58;
+    --accent1: #4a7a96;
+    --accent2: #ee8695;
+    --lightest: #fbbbad;
+
+    --pixel: 4px;
 }

@@ -1,4 +1,21 @@
-button {
+.button {
     padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent2);
+    color: var(--darkest);
+    outline: var(--pixel) solid var(--darkest);
+    outline-offset: calc(var(--pixel) * -1);
+    box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest);
+    transition: transform 0.05s, box-shadow 0.05s;
+}
 
+.button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: calc(var(--pixel) * 0.5) calc(var(--pixel) * 0.5) 0 0 var(--darkest);
+}
+
+.button:active {
+    transform: translate(var(--pixel), var(--pixel));
+    box-shadow: none;
 }

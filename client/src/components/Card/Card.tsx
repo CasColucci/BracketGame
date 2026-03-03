@@ -1,12 +1,13 @@
-import type { PropsWithChildren } from "react"
+import type { PropsWithChildren } from "react";
+import styles from './Card.module.css';
 
 interface CardProps extends PropsWithChildren {
     title: string
 }
 
-export const Card = ({ title, children }: CardProps) => {
+export default function Card({ title, children }: CardProps) {
     return (
-        <div>
+        <div className={styles.card}>
             <h1>{title}</h1>
             {children}
         </div>
