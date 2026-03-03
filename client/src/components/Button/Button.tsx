@@ -1,3 +1,5 @@
+import styles from './Button.module.css';
+
 interface ButtonProps {
     label: string
     onClick: () => void
@@ -6,7 +8,7 @@ interface ButtonProps {
 
 export default function Button({ label, onClick, disabled = false }: ButtonProps) {
     return (
-        <button onClick={onClick} disabled={disabled}>
+        <button onClick={onClick} disabled={disabled} className={styles.button}>
             {label}
         </button>
     )

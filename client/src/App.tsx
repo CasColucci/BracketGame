@@ -1,5 +1,7 @@
-import { useState } from 'react'
-import './variables.css'
+import { useState } from 'react';
+import './variables.css';
+import Button from './components/Button/Button.tsx';
+
 function App() {
     const [result, setResult] = useState<string>('')
 
@@ -20,6 +22,7 @@ function App() {
 
     return (
         <div>
+            <Button label='Test It' onClick={() => createLobbyClick("TestUser2")} />
             <button onClick={() => createLobbyClick("TestUser")}
             >Test It</button>
             <p>{result}</p>
