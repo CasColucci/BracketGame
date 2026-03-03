@@ -493,3 +493,6 @@ client/dist
 
 # Local config with secrets
 **/appsettings.Development.json
+
+# Licensed fonts
+src/assets/fonts/
