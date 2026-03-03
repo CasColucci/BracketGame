@@ -495,4 +495,4 @@ client/dist
 **/appsettings.Development.json
 
 # Licensed fonts
-src/assets/fonts/
+client/src/assets/fonts/

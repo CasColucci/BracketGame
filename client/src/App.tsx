@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import './variables.css'
 function App() {
     const [result, setResult] = useState<string>('')
 

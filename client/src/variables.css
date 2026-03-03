@@ -1,0 +1,29 @@
+/* Late Night Bath by sukinapan */
+@font-face {
+    font-family: 'Arcade_Cabinet';
+    src: local('Arcade Cabinet'), local('Arcade_Cabinet'),
+        url('./assets/fonts/Arcade_Cabinet.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Simple_Script';
+    src: local('Simple Script'), local('Simple_Script'),
+        url('./assets/fonts/Simple_Script.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DyslexicPixel';
+    src: local('DyslexicPixel'), 
+        url('./assets/fonts/DyslexicPixel.ttf') format('truetype');
+}
+
+:root {
+    --header-font: 'Arcade_Cabinet';
+    --body-font: 'Simple_Script';
+    --dyslexic-font: 'DyslexicPixel';
+    --darkest-gray: #282d3c;
+    --mid-gray: #5b5d70;
+    --lightest-gray: #74838c;
+    --cream: #ffc4b8;
+    --pink: #f69197;
+}
