@@ -1,13 +1,32 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .input {
     padding:16px 16px 12px 16px;
     border: none;
     background: var(--lightest);
     color: var(--second-darkest);
-    width: 100 %;
+    width: 100%;
     outline: var(--pixel) solid var(--darkest);
     outline-offset: calc(var(--pixel) * -1);
 }
 
 .input:focus {
     outline-color: var(--accent2);
+}
+
+.inputError {
+    outline-color: #b5405a;
+}
+
+.inputError:focus {
+    outline-color: #b5405a;
+}
+
+.errorText {
+    font-size: 0.75rem;
+    color: #b5405a;
+    margin-top: 6px;
 }

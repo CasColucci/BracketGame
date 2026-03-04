@@ -4,12 +4,24 @@ interface InputProps {
     placeholder: string
     disabled?: boolean
     onChange?: (value: string) => void
+    value?: string
+    maxLength?: number
+    error?: string
 }
 
-export default function input({ placeholder, disabled = false, onChange }: InputProps) {
+export default function Input({ placeholder, disabled = false, onChange, value, maxLength, error }: InputProps) {
     return (
-        <input disabled={disabled} placeholder={placeholder}
-            className={`${styles.input}`} onChange={(e) => onChange?.(e.target.value)} />
+        <div className={styles.wrapper}>
+            <input
+                disabled={disabled}
+                placeholder={placeholder}
+                className={`${styles.input} ${error ? styles.inputError : ''}`}
+                onChange={(e) => onChange?.(e.target.value)}
+                value={value}
+                maxLength={maxLength}
+            />
+            {error && <span className={styles.errorText}>{error}</span>}
+        </div>
     )
 }
 
