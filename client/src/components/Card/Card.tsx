@@ -9,6 +9,7 @@ export default function Card({ title, children }: CardProps) {
     return (
         <div className={styles.card}>
             <h1 className={styles.title}>{title}</h1>
+            <hr className={styles.line} />
             {children}
         </div>
     );

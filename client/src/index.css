@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     Global Stylings
 */
 html {
-    background-color: var(--second-darkest);
+    background-color: var(--accent1);
     font-family: var(--body-font);
     display: flex;
     align-items: center;

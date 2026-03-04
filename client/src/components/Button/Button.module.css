@@ -2,6 +2,7 @@
     padding: 22px 20px 12px 20px;
     border: none;
     cursor: pointer;
+    max-width: 300px;
     background: var(--accent2);
     color: var(--darkest);
     outline: var(--pixel) solid var(--darkest);

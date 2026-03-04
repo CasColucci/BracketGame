@@ -21,11 +21,11 @@
     --header-font: 'Scrambled_Eggs_Bold';
     --body-font: 'Simple_Script';
     --dyslexic-font: 'DyslexicPixel';
-    --darkest: #292831;
-    --second-darkest: #333f58;
+    --darkest: #333F58;
+    --second-darkest:#9F838C;   
     --accent1: #4a7a96;
     --accent2: #ee8695;
-    --lightest: #fbbbad;
+    --lightest: #FFFBFC;
 
     --pixel: 4px;
 }
