@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './variables.css';
-import Button from './components/Button/Button.tsx';
-import Card from './components/Card/Card.tsx'
+import Home from './pages/Home/Home';
 
 function App() {
     const [result, setResult] = useState<string>('')
@@ -23,10 +22,7 @@ function App() {
 
     return (
         <div>
-            <Card title="Golly's Bracket Game">
-                <Button label='Test It' onClick={() => createLobbyClick("TestUser2")} />
-                <p>{result}</p>
-            </Card>
+            <Home />
         </div >
     )
 }
