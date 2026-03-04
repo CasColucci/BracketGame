@@ -2,7 +2,7 @@
     padding: 22px 20px 12px 20px;
     border: none;
     cursor: pointer;
-    max-width: 300px;
+    width: 100%;
     outline: var(--pixel) solid var(--darkest);
     outline-offset: calc(var(--pixel) * -1);
     box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest);

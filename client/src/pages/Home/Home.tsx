@@ -24,12 +24,13 @@ export default function Home() {
     const [lobbyCodeError, setLobbyCodeError] = useState("")
     const [joinName, setJoinName] = useState("")
     const [joinNameError, setJoinNameError] = useState("")
+    const [error, setError] = useState("")
 
     // Create view state
     const [createName, setCreateName] = useState("")
     const [createNameError, setCreateNameError] = useState("")
 
-    function handleJoinClick() {
+    async function handleJoinClick() {
         let hasError = false;
 
         if (lobbyCode.length !== LOBBY_CODE_LENGTH) {
@@ -44,21 +45,62 @@ export default function Home() {
 
         if (hasError) return;
 
-        // TODO: proceed with join
+        try {
+            setError("");
+
+            const response = await fetch('/api/lobby/join', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ displayName: joinName, lobbyCode }),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setError(data.message ?? "Failed to join lobby.");
+                return;
+            }
+
+            const data = await response.json();
+            // TODO: navigate to lobby with data
+        } catch (err) {
+            console.log(err);
+            setError("Oops! Something went wrong!");
+        }
     }
 
-    function handleCreateClick() {
+    async function handleCreateClick() {
         if (createName.trim() === "") {
             setCreateNameError("Please enter your name.");
             return;
         }
 
-        // TODO: proceed with create
+        try {
+            setError("");
+
+            const response = await fetch('/api/lobby', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ displayName: createName }),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setError(data.message ?? "Failed to create lobby.");
+                return;
+            }
+
+            const data = await response.json();
+            // TODO: navigate to lobby with data
+        } catch (err) {
+            console.log(err);
+            setError("Oops! Something went wrong!");
+        }
     }
 
     if (view === "join") {
         return (
             <Card title="Join Lobby">
+                <p>{error}</p>
                 <Input
                     placeholder='Lobby Code...'
                     value={lobbyCode}
@@ -79,7 +121,7 @@ export default function Home() {
                         if (joinNameError) setJoinNameError("");
                     }}
                 />
-                <Button variant='pink' label='Join Lobby' disabled={joinName === "" || lobbyCode === ""} onClick={handleJoinClick} />
+                <Button variant='pink' label='Join Lobby' disabled={joinName === "" || lobbyCode === ""} onClick={() => handleJoinClick()} />
                 <Button label='Back' onClick={() => setView("menu")} />
             </Card>
         )
@@ -88,6 +130,7 @@ export default function Home() {
     if (view === "create") {
         return (
             <Card title="Create Lobby">
+                <p>{error}</p>
                 <Input
                     placeholder='Your Name...'
                     value={createName}
@@ -98,7 +141,7 @@ export default function Home() {
                         if (createNameError) setCreateNameError("");
                     }}
                 />
-                <Button variant='pink' label='Create Lobby' disabled={createName === ""} onClick={handleCreateClick} />
+                <Button variant='pink' label='Create Lobby' disabled={createName === ""} onClick={() => handleCreateClick()} />
                 <Button label='Back' onClick={() => setView("menu")} />
             </Card>
         )
