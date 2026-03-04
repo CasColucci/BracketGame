@@ -4,7 +4,7 @@ interface ButtonProps {
     label: string
     onClick: () => void
     disabled?: boolean
-    variant: string
+    variant?: string
 }
 
 export default function Button({ label, onClick, disabled = false, variant = "white" }: ButtonProps) {

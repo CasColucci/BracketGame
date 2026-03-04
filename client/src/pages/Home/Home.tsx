@@ -6,11 +6,16 @@ import { useState } from 'react';
 
 export default function Home() {
     const [view, setView] = useState<"menu" | "join" | "create">("menu")
+    const [displayName, setDisplayName] = useState("")
+    const [lobbyCode, setLobbyCode] = useState("")
 
     if (view === "join") {
         return (
             <Card title="Join Lobby">
-                {/* code input, name input, join button */}
+                <Input placeholder='Lobby Code...' onChange={(value) => setLobbyCode(value)} />
+                <Input placeholder='Your Name...' onChange={(value) => setDisplayName(value)} />
+                <Button variant='pink' label='Join Lobby' disabled={displayName === "" || lobbyCode === ""} onClick={() => { }} />
+                <Button label='Back' onClick={() => setView("menu")} />
             </Card>
         )
     }
@@ -18,7 +23,9 @@ export default function Home() {
     if (view === "create") {
         return (
             <Card title="Create Lobby">
-                {/* name input, create button */}
+                <Input placeholder='Your Name...' />
+                <Button variant='pink' label='Create Lobby' disabled={displayName === ""} onClick={() => { }} />
+                <Button label='Back' onClick={() => setView("menu")} />
             </Card>
         )
     }
