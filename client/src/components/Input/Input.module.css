@@ -1,0 +1,13 @@
+.input {
+    padding: 10px 16px;
+    border: none;
+    background: var(--lightest);
+    color: var(--second-darkest);
+    width: 100 %;
+    outline: var(--pixel) solid var(--darkest);
+    outline-offset: calc(var(--pixel) * -1);
+}
+
+.input:focus {
+    outline-color: var(--accent2);
+}

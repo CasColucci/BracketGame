@@ -7,10 +7,10 @@ interface CardProps extends PropsWithChildren {
 
 export default function Card({ title, children }: CardProps) {
     return (
-        <div className={styles.card}>
-            <h1 className={styles.title}>{title}</h1>
+        <div className={`${styles.card} ${styles.pink}`}>
+            <h1 className={`${styles.title}`}>{title}</h1>
             <hr className={styles.line} />
             {children}
-        </div>
+        </div >
     );
 };

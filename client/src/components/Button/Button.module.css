@@ -3,8 +3,6 @@
     border: none;
     cursor: pointer;
     max-width: 300px;
-    background: var(--accent2);
-    color: var(--darkest);
     outline: var(--pixel) solid var(--darkest);
     outline-offset: calc(var(--pixel) * -1);
     box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest);
@@ -19,4 +17,26 @@
 .button:active {
     transform: translate(var(--pixel), var(--pixel));
     box-shadow: none;
+}
+
+.button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest);
+}
+
+.pink {
+    background: var(--accent2);
+    color: var(--darkest);
+}
+
+.blue {
+    background: var(--accent1);
+    color: var(--lightest);
+}
+
+.white {
+    background: var(--lightest);
+    color: var(--darkest);
 }

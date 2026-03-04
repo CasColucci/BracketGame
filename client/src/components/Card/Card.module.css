@@ -1,4 +1,5 @@
 .card {
+    position: relative;
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -16,8 +17,28 @@
     font-size: 28px;
     font-family: var(--header-font);
     color: var(--darkest);
-    padding-bottom: 12px;
 }
+
+.pink::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--pixel) * 2);
+    background: var(--accent2);
+}
+
+.blue::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--pixel) * 2);
+    background: var(--accent1);
+}
+
 
 .line {
     border: none;
