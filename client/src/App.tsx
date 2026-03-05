@@ -1,30 +1,27 @@
 import { useState } from 'react';
 import './variables.css';
 import Home from './pages/Home/Home';
+import Lobby from './pages/Lobby/Lobby';
+
+type LobbyData = {
+    lobbyCode: string
+    displayName: string
+}
 
 function App() {
-    const [result, setResult] = useState<string>('')
+    const [view, setView] = useState<"home" | "lobby">("home")
+    const [lobbyData, setLobbyData] = useState<LobbyData | null>(null)
 
-    async function createLobbyClick(displayName: string) {
-        try {
-            const response = await fetch('/api/lobby', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ displayName }),
-            })
-            const data = await response.json()
-            setResult(JSON.stringify(data))
-        } catch (err) {
-            console.error(err)
-            setResult('Something went wrong')
-        }
+    function handleEnterLobby(data: LobbyData) {
+        setLobbyData(data);
+        setView("lobby");
     }
 
-    return (
-        <div>
-            <Home />
-        </div >
-    )
+    if (view === "lobby" && lobbyData) {
+        return <Lobby lobbyCode={lobbyData.lobbyCode} displayName={lobbyData.displayName} />
+    }
+
+    return <Home onEnterLobby={handleEnterLobby} />
 }
 
 export default App

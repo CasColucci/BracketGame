@@ -16,7 +16,11 @@ function filterName(value: string): string {
     return value.replace(/[^a-zA-Z0-9 '\-]/g, '');
 }
 
-export default function Home() {
+interface HomeProps {
+    onEnterLobby: (data: { lobbyCode: string, displayName: string }) => void
+}
+
+export default function Home({ onEnterLobby }: HomeProps) {
     const [view, setView] = useState<"menu" | "join" | "create">("menu")
 
     // Join view state
@@ -61,7 +65,7 @@ export default function Home() {
             }
 
             const data = await response.json();
-            // TODO: navigate to lobby with data
+            onEnterLobby({ lobbyCode: data.lobbyCode, displayName: joinName });
         } catch (err) {
             console.log(err);
             setError("Oops! Something went wrong!");
@@ -90,7 +94,7 @@ export default function Home() {
             }
 
             const data = await response.json();
-            // TODO: navigate to lobby with data
+            onEnterLobby({ lobbyCode: data.lobbyCode, displayName: createName });
         } catch (err) {
             console.log(err);
             setError("Oops! Something went wrong!");
