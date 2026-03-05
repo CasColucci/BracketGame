@@ -3,6 +3,7 @@ import Card from '../../components/Card/Card';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { useState } from 'react';
+import type { LobbyData } from '../../types';
 
 const LOBBY_CODE_LENGTH = 4;
 const NAME_MAX_LENGTH = 16;
@@ -17,7 +18,7 @@ function filterName(value: string): string {
 }
 
 interface HomeProps {
-    onEnterLobby: (data: { lobbyCode: string, displayName: string }) => void
+    onEnterLobby: (data: LobbyData) => void
 }
 
 export default function Home({ onEnterLobby }: HomeProps) {
@@ -28,11 +29,12 @@ export default function Home({ onEnterLobby }: HomeProps) {
     const [lobbyCodeError, setLobbyCodeError] = useState("")
     const [joinName, setJoinName] = useState("")
     const [joinNameError, setJoinNameError] = useState("")
-    const [error, setError] = useState("")
+    const [joinError, setJoinError] = useState("")
 
     // Create view state
     const [createName, setCreateName] = useState("")
     const [createNameError, setCreateNameError] = useState("")
+    const [createError, setCreateError] = useState("")
 
     async function handleJoinClick() {
         let hasError = false;
@@ -50,25 +52,29 @@ export default function Home({ onEnterLobby }: HomeProps) {
         if (hasError) return;
 
         try {
-            setError("");
+            setJoinError("");
 
             const response = await fetch('/api/lobby/join', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ displayName: joinName, lobbyCode }),
+                body: JSON.stringify({ code: lobbyCode, displayName: joinName }),
             });
 
+            if (response.status === 404) {
+                setJoinError("There is no lobby associated with that code!");
+                return;
+            }
+
             if (!response.ok) {
-                const data = await response.json();
-                setError(data.message ?? "Failed to join lobby.");
+                setJoinError("Oops! Something went wrong!");
                 return;
             }
 
             const data = await response.json();
-            onEnterLobby({ lobbyCode: data.lobbyCode, displayName: joinName });
+            onEnterLobby({ lobbyCode: data.lobbyCode, displayName: joinName, players: data.players ?? [] });
         } catch (err) {
             console.log(err);
-            setError("Oops! Something went wrong!");
+            setJoinError("Oops! Something went wrong!");
         }
     }
 
@@ -79,7 +85,7 @@ export default function Home({ onEnterLobby }: HomeProps) {
         }
 
         try {
-            setError("");
+            setCreateError("");
 
             const response = await fetch('/api/lobby', {
                 method: 'POST',
@@ -88,23 +94,22 @@ export default function Home({ onEnterLobby }: HomeProps) {
             });
 
             if (!response.ok) {
-                const data = await response.json();
-                setError(data.message ?? "Failed to create lobby.");
+                setCreateError("Oops! Something went wrong!");
                 return;
             }
 
             const data = await response.json();
-            onEnterLobby({ lobbyCode: data.lobbyCode, displayName: createName });
+            onEnterLobby({ lobbyCode: data.lobbyCode, displayName: createName, players: data.players ?? [] });
         } catch (err) {
             console.log(err);
-            setError("Oops! Something went wrong!");
+            setCreateError("Oops! Something went wrong!");
         }
     }
 
     if (view === "join") {
         return (
             <Card title="Join Lobby">
-                <p>{error}</p>
+                {joinError && <p>{joinError}</p>}
                 <Input
                     placeholder='Lobby Code...'
                     value={lobbyCode}
@@ -126,7 +131,7 @@ export default function Home({ onEnterLobby }: HomeProps) {
                     }}
                 />
                 <Button variant='pink' label='Join Lobby' disabled={joinName === "" || lobbyCode === ""} onClick={() => handleJoinClick()} />
-                <Button label='Back' onClick={() => setView("menu")} />
+                <Button label='Back' onClick={() => { setView("menu"); setJoinError(""); }} />
             </Card>
         )
     }
@@ -134,7 +139,7 @@ export default function Home({ onEnterLobby }: HomeProps) {
     if (view === "create") {
         return (
             <Card title="Create Lobby">
-                <p>{error}</p>
+                {createError && <p>{createError}</p>}
                 <Input
                     placeholder='Your Name...'
                     value={createName}
@@ -146,7 +151,7 @@ export default function Home({ onEnterLobby }: HomeProps) {
                     }}
                 />
                 <Button variant='pink' label='Create Lobby' disabled={createName === ""} onClick={() => handleCreateClick()} />
-                <Button label='Back' onClick={() => setView("menu")} />
+                <Button label='Back' onClick={() => { setView("menu"); setCreateError(""); }} />
             </Card>
         )
     }

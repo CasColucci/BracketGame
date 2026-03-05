@@ -2,11 +2,7 @@ import { useState } from 'react';
 import './variables.css';
 import Home from './pages/Home/Home';
 import Lobby from './pages/Lobby/Lobby';
-
-type LobbyData = {
-    lobbyCode: string
-    displayName: string
-}
+import type { LobbyData } from './types';
 
 function App() {
     const [view, setView] = useState<"home" | "lobby">("home")
@@ -18,7 +14,7 @@ function App() {
     }
 
     if (view === "lobby" && lobbyData) {
-        return <Lobby lobbyCode={lobbyData.lobbyCode} displayName={lobbyData.displayName} />
+        return <Lobby lobbyCode={lobbyData.lobbyCode} displayName={lobbyData.displayName} players={lobbyData.players} />
     }
 
     return <Home onEnterLobby={handleEnterLobby} />

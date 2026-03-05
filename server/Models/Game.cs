@@ -12,5 +12,5 @@ public class Game
     public Guid? CurrentRoundId { get; set; }
     public Guid LobbyId { get; set; }
     public string? Winner { get; set; }
-    public ICollection<string>? Losers { get; set; }
+    public List<string>? Losers { get; set; }
 }

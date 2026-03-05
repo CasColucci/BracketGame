@@ -27,8 +27,15 @@ app.MapPost("/api/lobby", async (CreateLobbyRequest request, LobbyService lobbyS
 
 app.MapPost("/api/lobby/join", async (JoinLobbyRequest request, LobbyService lobbyService) =>
 {
-    var result = await lobbyService.JoinLobby(request.Code, request.DisplayName);
-    return Results.Ok(result);
+    try
+    {
+        var result = await lobbyService.JoinLobby(request.Code, request.DisplayName);
+        return Results.Ok(result);
+    }
+    catch (KeyNotFoundException)
+    {
+        return Results.NotFound();
+    }
 });
 
 app.MapGet("/api/lobby/validate", async (string code, LobbyService lobbyService) =>

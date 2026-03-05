@@ -6,17 +6,23 @@
     gap: 16px;
     background: var(--lightest);
     padding: 32px;
-    margin: 16px;
+    margin: 64px;
     outline: var(--pixel) solid var(--darkest);
     outline-offset: calc(var(--pixel) * -1);
     box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest), 
         calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 0 var(--darkest);
 }
 
+.wide {
+    width: calc(100% - 128px);
+    min-height: 80svh;
+}
+
 .title {
     font-size: 28px;
     font-family: var(--header-font);
     color: var(--darkest);
+    width: 100%;
 }
 
 .pink::before {
