@@ -93,7 +93,7 @@ A game written in ASP.NET and React with SignalR, to run brackets with your frie
 - [ ] Bracket visualization UI
 - [ ] SignalR broadcasts for each matchup phase transition
 #### Results/Complete Phase
-- [ ] Winner and losers saved to game entitty (in denormalized strings)
+- [ ] Winner and losers saved to game entity (in denormalized strings)
 - [ ] Results are displayed on the screen
 - [ ] Return to the lobby for the next game
 - [ ] Prior games list in the lobby is updated
