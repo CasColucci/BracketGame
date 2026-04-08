@@ -1,7 +1,9 @@
 /* SIZING RESET BY JOSH COMEAU */
 
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -24,18 +26,31 @@ body {
 }
 
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -43,14 +58,20 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
   width: 100%;
   display: flex;
@@ -62,16 +83,16 @@ h1, h2, h3, h4, h5, h6 {
     Global Stylings
 */
 html {
-    background-color: var(--accent1);
-    font-family: var(--body-font);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    min-height: 100svh;
-    font-size; 14px;
+  background-color: var(--accent1);
+  font-family: var(--body-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  min-height: 100svh;
+  font-size: 14px;
 }
 
 .dyslexic-font {
-    font-family: var(--dyslexic-font)
+  font-family: var(--dyslexic-font);
 }
