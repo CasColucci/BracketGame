@@ -1,53 +1,57 @@
 .card {
-    position: relative;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    background: var(--lightest);
-    padding: 32px;
-    margin: 64px;
-    outline: var(--pixel) solid var(--darkest);
-    outline-offset: calc(var(--pixel) * -1);
-    box-shadow: var(--pixel) var(--pixel) 0 0 var(--darkest), 
-        calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 0 var(--darkest);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: var(--lightest);
+  padding: 32px;
+  margin: 64px;
+  outline: var(--pixel) solid var(--darkest);
+  outline-offset: calc(var(--pixel) * -1);
+  box-shadow:
+    var(--pixel) var(--pixel) 0 0 var(--darkest),
+    calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 0 var(--darkest);
 }
 
 .wide {
-    width: calc(100% - 128px);
-    min-height: 80svh;
+  width: calc(100% - 128px);
+  min-height: 80svh;
 }
 
 .title {
-    font-size: 28px;
-    font-family: var(--header-font);
-    color: var(--darkest);
-    width: 100%;
+  font-size: 28px;
+  font-family: var(--header-font);
+  color: var(--darkest);
+  width: 100%;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
 }
 
 .pink::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: calc(var(--pixel) * 2);
-    background: var(--accent2);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--pixel) * 2);
+  background: var(--accent2);
 }
 
 .blue::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: calc(var(--pixel) * 2);
-    background: var(--accent1);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--pixel) * 2);
+  background: var(--accent1);
 }
 
-
 .line {
-    border: none;
-    border-top: var(--pixel) dashed var(--second-darkest);
-    width: 100%;
+  border: none;
+  border-top: var(--pixel) dashed var(--second-darkest);
+  width: 100%;
 }
